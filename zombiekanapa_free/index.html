@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZOMBIE_NEXUS // PUBLIC ACCESS PORTAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020505;
+      --fg: #c8ffb0;
+      --fg-soft: #7fbf7a;
+      --accent: #8cffda;
+      --danger: #ff6666;
+      --mono: "IBM Plex Mono", "Fira Mono", Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #061010 0, #020505 45%, #000000 100%);
+      color: var(--fg);
+      font-family: var(--mono);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .frame {
+      border: 1px solid #1a3b2a;
+      box-shadow: 0 0 24px rgba(0, 255, 128, 0.15);
+      max-width: 960px;
+      width: 95%;
+      padding: 24px 28px;
+      background: rgba(0, 0, 0, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scanline {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0,
+        rgba(0, 0, 0, 0.1) 1px,
+        rgba(0, 0, 0, 0.3) 2px
+      );
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .title-block {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+    }
+
+    .title-main {
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .title-sub {
+      font-size: 0.75rem;
+      color: var(--fg-soft);
+    }
+
+    .status-block {
+      text-align: right;
+      font-size: 0.7rem;
+      color: var(--fg-soft);
+    }
+
+    .status-label {
+      color: var(--accent);
+    }
+
+    .divider {
+      border-top: 1px solid #1a3b2a;
+      margin: 10px 0 18px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 720px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .status-block {
+        text-align: left;
+        margin-top: 8px;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+
+    .menu-block h2 {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-soft);
+      margin-bottom: 8px;
+    }
+
+    .menu {
+      list-style: none;
+      border: 1px solid #1a3b2a;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+    }
+
+    .menu li {
+      padding: 4px 0;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--fg);
+    }
+
+    .menu li::before {
+      content: ">";
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    .menu li.disabled {
+      opacity: 0.4;
+    }
+
+    .menu li.active {
+      color: var(--accent);
+    }
+
+    .menu li span.label {
+      text-transform: uppercase;
+    }
+
+    .menu li span.tag {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--fg-soft);
+      border: 1px solid #1a3b2a;
+      padding: 1px 4px;
+      margin-left: auto;
+    }
+
+    .content-block {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .mono-block {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      background: rgba(2, 10, 6, 0.9);
+      border: 1px solid #1a3b2a;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      white-space: pre-line;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--fg-soft);
+      margin: 10px 0 4px;
+    }
+
+    .list {
+      margin-left: 12px;
+      margin-bottom: 10px;
+    }
+
+    .list li {
+      margin-bottom: 2px;
+    }
+
+    .footer {
+      margin-top: 14px;
+      font-size: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--fg-soft);
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .danger {
+      color: var(--danger);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="scanline"></div>
+
+    <header class="header">
+      <div class="title-block">
+        <div class="title-main">ZOMBIE_NEXUS // PUBLIC ACCESS PORTAL</div>
+        <div class="title-sub">CIVILIAN‑SAFE INTERFACE · RETRO TERMINAL MODE</div>
+      </div>
+      <div class="status-block">
+        <div><span class="status-label">VERSION:</span> 0.1.43</div>
+        <div><span class="status-label">STATUS:</span> SITE_DEPLOYMENT_PENDING</div>
+        <div><span class="status-label">AUTH:</span> PUBLIC USER</div>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <main class="layout">
+      <section class="menu-block">
+        <h2>MAIN MENU</h2>
+        <ul class="menu">
+          <li class="active">
+            <span class="label">Transmissions</span>
+            <span class="tag">Soon</span>
+          </li>
+          <li>
+            <span class="label">Visual Archive</span>
+            <span class="tag">Soon</span>
+          </li>
+          <li>
+            <span class="label">Network Links</span>
+            <span class="tag">Soon</span>
+          </li>
+          <li>
+            <span class="label">About</span>
+          </li>
+          <li>
+            <span class="label">Contact</span>
+          </li>
+          <li class="disabled">
+            <span class="label">Exit Nexus</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <div class="mono-block">
+> INITIALIZING PUBLIC LANDING MODULE…
+> SYSTEM ONLINE.
+
+Welcome to the ZOMBIE_NEXUS.
+This portal is currently in CONSTRUCTION_MODE.
+
+A stable, public‑friendly interface for music, visuals,
+and neural experiments will be deployed here soon.
+        </div>
+
+        <h3 class="section-title">Current State</h3>
+        <ul class="list">
+          <li>MODE: DEMO</li>
+          <li>ACTIVE MODULES: Landing shell only</li>
+          <li>CONTENT: Limited preview</li>
+        </ul>
+
+        <div class="mono-block">
+> DEMO LIMITATIONS:
+  - Max Pages: 1
+  - Max Active Links: 0
+  - Uploads: Disabled
+        </div>
+
+        <h3 class="section-title">What’s Coming</h3>
+        <ul class="list">
+          <li>Clean, fast navigation for all visitors</li>
+          <li>Dedicated sections for audio transmissions and visual work</li>
+          <li>Public‑safe gateway to social and creative networks</li>
+        </ul>
+
+        <h3 class="section-title">Signal Log</h3>
+        <ul class="list">
+          <li>LAST UPDATE: 21 JAN 2026</li>
+          <li>NEXT UPDATE: UNDEFINED</li>
+        </ul>
+      </section>
+    </main>
+
+    <div class="divider"></div>
+
+    <footer class="footer">
+      <div>TRANSMISSION: ZOMBIE_NEXUS // CIVILIAN INTERFACE</div>
+      <div class="danger">You may safely close this window and return later.</div>
+    </footer>
+  </div>
+</body>
+</html>
