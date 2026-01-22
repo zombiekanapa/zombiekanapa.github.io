@@ -15,10 +15,69 @@
             background: #0a0e27;
             overflow: hidden;
         }
+        .navbar {
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-brand {
+            font-size: 18px;
+            font-weight: 900;
+            color: #00ff88;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .navbar-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+        .navbar-links a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+            transform: translateY(-2px);
+        }
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s ease;
+        }
+        .navbar-links a:hover::after {
+            width: 100%;
+        }
         .figma-container {
             width: 100%;
-            height: 100vh;
+            height: calc(100vh - 60px);
             background: #000;
+            margin-top: 60px;
+            overflow: hidden;
         }
         .figma-embed {
             width: 100%;
@@ -26,9 +85,40 @@
             border: none;
             display: block;
         }
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 15px;
+                height: auto;
+            }
+            .navbar-links {
+                gap: 15px;
+                justify-content: center;
+                width: 100%;
+            }
+            .navbar-links a {
+                font-size: 11px;
+            }
+            .figma-container {
+                height: calc(100vh - 120px);
+            }
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-brand">🧟 ZOMBIE</div>
+        <ul class="navbar-links">
+            <li><a href="https://github.com/zombiekanapa" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://huggingface.co/zombiekanapa" target="_blank" rel="noopener noreferrer">HuggingFace</a></li>
+            <li><a href="https://zombiekanapa.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a></li>
+            <li><a href="https://www.youtube.com/@zombiekanapa" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+            <li><a href="https://www.instagram.com/zombiekanapa/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://zombiekanapa.free.nf/?i=1" target="_blank" rel="noopener noreferrer">Blog</a></li>
+        </ul>
+    </nav>
+
     <div class="figma-container">
         <iframe class="figma-embed" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fmake%2F0EJt3y3CLKnBKIcc09zakk%2FLanding-Page-Design%3Ft%3DSnKzTalxkvPsniHn-1" allowfullscreen></iframe>
     </div>
