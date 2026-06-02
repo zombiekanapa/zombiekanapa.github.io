@@ -1,0 +1,6 @@
+{
+  "name": "Szczecin SafePoint Navigator",
+  "description": "A web application leveraging Google Maps to provide civilians in Szczecin with access to verified emergency evacuation points.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
