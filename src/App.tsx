@@ -28,6 +28,8 @@ import {
   Smartphone
 } from 'lucide-react';
 
+import GemEmbed from './components/GemEmbed';
+
 export default function App() {
   const [spots, setSpots] = useState<EvacuationSpot[]>(evacuationSpots);
   const [selectedSpot, setSelectedSpot] = useState<EvacuationSpot | null>(null);
@@ -327,27 +329,32 @@ export default function App() {
             </div>
             
             {/* OFFLINE STATUS CHIP */}
-            <button 
-              onClick={handleToggleOffline}
-              title="Przełącz tryb Offline/Online"
-              className={`flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono border transition-all
-                ${offlineMode 
-                  ? 'bg-amber-950/40 border-amber-500 text-amber-400' 
-                  : 'bg-zinc-900 border-[#00FF00]/30 text-[#00FF00]'
-                }`}
-            >
-              {offlineMode ? (
-                <>
-                  <WifiOff size={10} />
-                  <span>OFFLINE</span>
-                </>
-              ) : (
-                <>
-                  <Wifi size={10} className="animate-pulse" />
-                  <span>LIVE</span>
-                </>
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={handleToggleOffline}
+                title="Przełącz tryb Offline/Online"
+                className={`flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono border transition-all
+                  ${offlineMode 
+                    ? 'bg-amber-950/40 border-amber-500 text-amber-400' 
+                    : 'bg-zinc-900 border-[#00FF00]/30 text-[#00FF00]'
+                  }`}
+              >
+                {offlineMode ? (
+                  <>
+                    <WifiOff size={10} />
+                    <span>OFFLINE</span>
+                  </>
+                ) : (
+                  <>
+                    <Wifi size={10} className="animate-pulse" />
+                    <span>LIVE</span>
+                  </>
+                )}
+              </button>
+
+              {/* GEM EMBED / LINK */}
+              <GemEmbed />
+            </div>
           </div>
           
           <div className="text-[20px] font-black uppercase text-white tracking-tighter leading-tight font-mono">
