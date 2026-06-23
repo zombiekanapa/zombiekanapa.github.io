@@ -18,3 +18,6 @@ View your app in AI Studio: https://ai.studio/apps/203f79d4-342e-4668-878b-214b3
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+## Notes about Gemini GEM embed
+
+The site includes an "Open GEM" link which opens the shared Gemini GEM in a new browser tab. Embedding the Gemini share page inside an iframe is blocked by Google (X-Frame-Options / Content-Security-Policy), so the app uses a link fallback instead of an inline embed. If you have an API key for Gemini and want deeper integration, configure GEMINI_API_KEY and use the Gemini API instead.
