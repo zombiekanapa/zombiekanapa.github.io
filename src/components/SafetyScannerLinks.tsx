@@ -1,15 +1,15 @@
-import React from 'react';
-
 export default function SafetyScannerLinks() {
   const links = [
     {
       url: 'https://safetyscan.lovable.app/',
       title: 'SafetyScan (Lovable.app)',
-      desc: 'Hosted Safety Scanner app (Agent A) — built with a web agent and cloud inference.'n    },
+      desc: 'Hosted Safety Scanner app (Agent A) — built with a web agent and cloud inference.'
+    },
     {
       url: 'https://share.gemini.google/cXHVxb1hfeXQ',
       title: 'Gemini Shared Scanner',
-      desc: 'Gemini share link (Agent B) — interactive GEM created with Gemini.'n    }
+      desc: 'Gemini share link (Agent B) — interactive GEM created with Gemini.'
+    }
   ];
 
   return (
