@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const gemUrl = "https://share.gemini.google/MLd2FEmbdpj5";
 

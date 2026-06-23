@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 
 import GemEmbed from './components/GemEmbed';
+import SafetyScannerLinks from './components/SafetyScannerLinks';
 
 export default function App() {
   const [spots, setSpots] = useState<EvacuationSpot[]>(evacuationSpots);
@@ -353,7 +354,10 @@ export default function App() {
               </button>
 
               {/* GEM EMBED / LINK */}
-              <GemEmbed />
+              <div className="flex items-center gap-2">
+                <GemEmbed />
+                <SafetyScannerLinks />
+              </div>
             </div>
           </div>
           
